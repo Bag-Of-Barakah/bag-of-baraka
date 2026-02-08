@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bag</title>
+    <link rel="stylesheet" href="styleHB.css">
+</head>
+
+<body class="bg-fixed">
+
+    <div class="main-container bag-page">
+
+        <div class="bag-box">
+            <h2>Your Bag</h2>
+
+            <ul id="bagList" class="bag-list"></ul>
+
+            <div class="bag-footer">
+                <div class="total-price">
+                    Total: $<span id="totalPrice">0</span>
+                </div>
+
+                <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                    💳 Check Out
+                </button>
+            </div>
+
+            <a href="index.html" class="continue-link">⬅ Continue Shopping</a>
+        </div>
+
+    </div>
+
+    <script src="bag.js"></script>
+</body>
+</html>
