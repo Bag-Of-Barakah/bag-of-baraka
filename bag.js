@@ -70,7 +70,7 @@ function checkoutWhatsApp() {
     message += `Estimated Total: $${bag.length * ITEM_PRICE}%0A%0A`;
     message += "Please let me know the price, delivery date, and location details.";
 
-    const phoneNumber = "14155551234"; // 🔴 REPLACE WITH YOUR NUMBER
+    const phoneNumber = "19414141423";
 
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -83,3 +83,4 @@ function checkoutWhatsApp() {
 // Initial render
 renderBag();
 updateBagCount();
+
