@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Center of Cape Girardeau Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url('BOB4.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Overlay to improve text readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.55);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background-color: #2e8b57;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 48px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2e5d43;
+            margin-bottom: 25px;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        .description {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 18px;
+            text-align: justify;
+        }
+        
+        .contact-info {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2e8b57;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 22px;
+            color: white;
+        }
+        
+        .whatsapp {
+            background-color: #25D366;
+        }
+        
+        .email {
+            background-color: #D44638;
+        }
+        
+        .contact-text {
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .contact-link {
+            color: #2e5d43;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: #2e8b57;
+            text-decoration: underline;
+        }
+        
+        .rules {
+            background-color: #f0f8ff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            margin-top: 30px;
+            border-top: 3px solid #4a6fa5;
+        }
+        
+        .rules h3 {
+            color: #2e5d43;
+            margin-bottom: 15px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .rules ul {
+            padding-left: 20px;
+            color: #444;
+            line-height: 1.5;
+        }
+        
+        .rules li {
+            margin-bottom: 10px;
+        }
+        
+        .stripe-badge {
+            display: inline-block;
+            background-color: #635bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+        
+        .stripe-badge:hover {
+            background-color: #554fd8;
+        }
+        
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+            
+            .description, .contact-text {
+                font-size: 16px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <div class="logo">
+                <i class="fas fa-mosque"></i>
+            </div>
+            
+            <h1>Support Our Community Initiative</h1>
+            
+            <p class="description">
+                We are running this small website to facilitate people around Islamic Center of Cape Girardeau. Our main target is providing you with the Asian and Arabian items that you can not get for a good price living in beautiful city of Cape Girardeau. Support us by ordering.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-text">
+                        WhatsApp: <a href="https://wa.me/15734194347" class="contact-link" target="_blank">+1 (573) 419-4347</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        Email: <a href="mailto:bagofbaraka.haqibat@gmail.com" class="contact-link">bagofbaraka.haqibat@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rules">
+                <h3>Ordering Rules & Information</h3>
+                <ul>
+                    <li>Every order takes you to WhatsApp message for confirmation.</li>
+                    <li>Your payment is secure with <a href="https://stripe.com" class="stripe-badge" target="_blank">Stripe.com</a></li>
+                    <li>Order date and all other confirmations will be provided through WhatsApp message.</li>
+                    <li>We aim to process orders within 24-48 hours.</li>
+                    <li>Delivery/pickup arrangements will be discussed via WhatsApp.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to enhance interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to contact links
+            const contactLinks = document.querySelectorAll('.contact-link');
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+            
+            // WhatsApp order simulation button
+            const whatsappBtn = document.querySelector('.whatsapp');
+            whatsappBtn.addEventListener('click', function() {
+                window.open('https://wa.me/15734194347?text=Hello!%20I%20would%20like%20to%20place%20an%20order.', '_blank');
+            });
+            
+            // Console log for demonstration
+            console.log("Islamic Center of Cape Girardeau Support Website Loaded");
+        });
+    </script>
+</body>
+</html>

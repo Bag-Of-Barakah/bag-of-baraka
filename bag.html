@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Bag - Bag of Barakah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            background-image: url("BOB4.jpeg");
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .bag-page {
+            margin-top: 40px;
+        }
+        
+        .bag-box {
+            background-color: rgba(252, 252, 252, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: #2e5d43;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* Bag Items List */
+        .bag-list {
+            list-style: none;
+            margin-bottom: 40px;
+            min-height: 200px;
+        }
+        
+        .empty-bag {
+            text-align: center;
+            padding: 60px 20px;
+            color: #777;
+        }
+        
+        .empty-bag i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        .empty-bag h3 {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 24px;
+        }
+        
+        .empty-bag p {
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        
+        .bag-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        
+        .bag-item:last-child {
+            border-bottom: none;
+        }
+        
+        .bag-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        .bag-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .bag-item-details h4 {
+            color: #2e5d43;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .bag-item-price {
+            color: #666;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .qty-btn:hover {
+            background: #f0f0f0;
+            border-color: #2e8b57;
+        }
+        
+        .quantity {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .bag-item-total {
+            text-align: right;
+        }
+        
+        .bag-item-total p {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+        
+        .remove-btn {
+            background: #ffeaea;
+            color: #d9534f;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .remove-btn:hover {
+            background: #ffd6d6;
+            transform: translateY(-2px);
+        }
+        
+        /* Bag Footer */
+        .bag-footer {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .total-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2e5d43;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .summary-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .summary-label {
+            color: #666;
+        }
+        
+        .summary-value {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .summary-row.total {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2e5d43;
+            border-bottom: 2px solid #2e5d43;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Buttons */
+        .checkout-btn {
+            background-color: #2e5d43;
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(46, 93, 67, 0.2);
+        }
+        
+        .checkout-btn:hover {
+            background-color: #2e8b57;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 93, 67, 0.3);
+        }
+        
+        .checkout-btn:active {
+            transform: translateY(0);
+        }
+        
+        .clear-btn {
+            background-color: white;
+            color: #666;
+            border: 2px solid #ddd;
+            padding: 15px 30px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .clear-btn:hover {
+            background-color: #f8f9fa;
+            border-color: #bbb;
+        }
+        
+        .continue-link {
+            display: inline-block;
+            color: #2e5d43;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .continue-link:hover {
+            background-color: #f8f9fa;
+            color: #2e8b57;
+            border-color: #2e8b57;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .bag-box {
+                padding: 25px;
+            }
+            
+            .bag-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .bag-item-img {
+                margin: 0 auto;
+            }
+            
+            .bag-item-total {
+                text-align: center;
+            }
+            
+            .summary-details {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            .total-price {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .bag-box {
+                padding: 20px;
+            }
+            
+            .checkout-btn, .clear-btn {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Header for consistency with main page */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .business-title {
+            max-width: 400px;
+            margin: 0 auto 15px;
+        }
+        
+        .business-title img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="main-container bag-page">
+        
+        <!-- Optional Header with Business Logo -->
+        <div class="page-header">
+            <div class="business-title">
+                <!-- Add your business logo/title image here -->
+                <img src="BOBTitle.jpeg" alt="Bag of Barakah">
+            </div>
+            <h1>Your Shopping Bag</h1>
+        </div>
+        
+        <div class="bag-box">
+            <div class="bag-summary">
+                <div class="summary-row">
+                    <span class="summary-label">Items in Bag:</span>
+                    <span class="summary-value" id="itemsCount">0</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal:</span>
+                    <span class="summary-value">$<span id="subtotal">0.00</span></span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Tax (8%):</span>
+                    <span class="summary-value">$<span id="taxAmount">0.00</span></span>
+                </div>
+                <div class="summary-row total">
+                    <span class="summary-label">Total:</span>
+                    <span class="summary-value">$<span id="totalPrice">0.00</span></span>
+                </div>
+            </div>
+
+            <ul id="bagList" class="bag-list">
+                <!-- Bag items will be loaded here by JavaScript -->
+            </ul>
+
+            <div class="bag-footer">
+                <button class="checkout-btn" id="checkoutBtn">
+                    <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+                </button>
+                
+                <button class="clear-btn" id="clearBagBtn">
+                    <i class="fas fa-trash-alt"></i> Clear Bag
+                </button>
+            </div>
+
+            <a href="index.html" class="continue-link">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Use the updated bag.js file -->
+    <script src="bag.js"></script>
+    
+    <!-- Initialize the page -->
+    <script>
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update tax calculation
+            function updateTaxDisplay() {
+                const subtotal = parseFloat(document.getElementById('subtotal').textContent) || 0;
+                const tax = subtotal * 0.08;
+                document.getElementById('taxAmount').textContent = tax.toFixed(2);
+                document.getElementById('totalPrice').textContent = (subtotal + tax).toFixed(2);
+            }
+            
+            // Override the renderBag function to include tax update
+            const originalRenderBag = window.renderBag;
+            if (originalRenderBag) {
+                window.renderBag = function() {
+                    originalRenderBag();
+                    updateTaxDisplay();
+                };
+            }
+            
+            // Initial render
+            if (window.renderBag) {
+                window.renderBag();
+            }
+            
+            // Add event listeners
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', function() {
+                    if (window.checkoutWhatsApp) {
+                        window.checkoutWhatsApp();
+                    }
+                });
+            }
+            
+            const clearBtn = document.getElementById('clearBagBtn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function() {
+                    if (window.clearBag) {
+                        window.clearBag();
+                    }
+                });
+            }
+            
+            // Update bag count on load
+            if (window.updateBagCount) {
+                window.updateBagCount();
+            }
+        });
+    </script>
+</body>
+</html>
