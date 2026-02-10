@@ -264,6 +264,7 @@
     /* Footer */
     .footer {
         background-color: #f8f9fa;
+        border-radius: 12px;
         padding: 40px 0;
         margin-top: 60px;
         border-top: 1px solid #eee;
@@ -389,4 +390,5 @@
             top: 10px;
             right: 10px;
         }
+
     }
