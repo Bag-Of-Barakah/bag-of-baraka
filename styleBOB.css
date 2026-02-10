@@ -20,6 +20,7 @@
     /* Header Section */
     .header {
         text-align: center;
+        border-radius: 12px;
         padding: 30px 0;
         background: linear-gradient(to right, #ff9900, #eba235, #f8f9fa);
         
@@ -265,9 +266,10 @@
     .footer {
         background-color: #f8f9fa;
         border-radius: 12px;
-        padding: 40px 0;
+        padding: 40px;
         margin-top: 60px;
         border-top: 1px solid #eee;
+       
     }
     
     .footer-content {
@@ -392,3 +394,4 @@
         }
 
     }
+
